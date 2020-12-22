@@ -23,7 +23,7 @@ var message = false;
 var semaforo = true;
 
 
-while (arrayUtente.length < 4 && semaforo == true) {
+while (arrayUtente.length < 84 && semaforo == true) {
     var utente = parseInt(prompt("Inserisci un numero"));
 
     for (i = 0; i < arrayNumeri.length; i++) {
