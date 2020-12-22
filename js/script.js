@@ -10,30 +10,48 @@ while (arrayNumeri.length < 16) {
 }
 console.log(arrayNumeri);
 
+
+
+
+
 // viene chiesto all'utente di inserire i numeri 
+
+
 
 message = false;
 
+
 while (arrayUtente.length < 4) {
     var utente = parseInt(prompt("Inserisci un numero"));
-    if(utente > 10) {
+
+    for (i = 0; i < arrayNumeri.length; i++) {
+        if (arrayNumeri[i] == utente) {
+            semaforo = false;
+        } else {
+            semaforo = true;
+        }
+    }
+
+    if(utente >= 1 && utente <= 20) {
         message = true;
         console.log(utente);
     } else {
         message = false;
     }
-    if ((arrayUtente.includes(utente) == false) && (message == true)) {
-        var = numeroAccettato
+    if ((arrayUtente.includes(utente) == false) && (message == true) && (semaforo == true)) {
         arrayUtente.push(utente);
     } else if (message == false) {
         alert("Intervallo errato");
-    } else {
+    } else if (semaforo == false) {
+        alert ("hai perso")
+    }else {
         alert("Non puoi inserire lo stesso numero più volte");
     }
 }
+
 console.log(arrayUtente);
 
-// condizioni di perdita
+
 
 
 
