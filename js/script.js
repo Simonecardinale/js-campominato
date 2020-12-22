@@ -3,7 +3,7 @@ arrayNumeri = [];
 arrayUtente = [];
 
 while (arrayNumeri.length < 16) {
-    var numeri = Math.floor(Math.random() * (20 - 1) + 1);
+    var numeri = Math.floor(Math.random() * (100 - 1) + 1);
     if (arrayNumeri.includes(numeri) == false) {
         arrayNumeri.push(numeri);
     }
@@ -14,42 +14,47 @@ console.log(arrayNumeri);
 
 
 
-// viene chiesto all'utente di inserire i numeri 
+// viene chiesto all'utente di inserire i numeri e verifico le condizioni di perdita della partita 
 
 
 
-message = false;
+var message = false;
+
+var semaforo = true;
 
 
-while (arrayUtente.length < 4) {
+while (arrayUtente.length < 4 && semaforo == true) {
     var utente = parseInt(prompt("Inserisci un numero"));
 
     for (i = 0; i < arrayNumeri.length; i++) {
         if (arrayNumeri[i] == utente) {
             semaforo = false;
+            alert("hai perso");
+        } 
+    }
+    if (semaforo == true) {
+        if(utente >= 1 && utente <= 100) {
+            message = true;
+            // console.log(utente);
         } else {
-            semaforo = true;
+            message = false;
         }
-    }
-
-    if(utente >= 1 && utente <= 20) {
-        message = true;
-        console.log(utente);
-    } else {
-        message = false;
-    }
-    if ((arrayUtente.includes(utente) == false) && (message == true) && (semaforo == true)) {
-        arrayUtente.push(utente);
-    } else if (message == false) {
-        alert("Intervallo errato");
-    } else if (semaforo == false) {
-        alert ("hai perso")
-    }else {
-        alert("Non puoi inserire lo stesso numero più volte");
+        if ((arrayUtente.includes(utente) == false) && (message == true)) {
+            arrayUtente.push(utente);
+        } else if (message == false) {
+            alert("Intervallo errato");
+        } else {
+            alert("Non puoi inserire lo stesso numero più volte");
+        }
     }
 }
 
-console.log(arrayUtente);
+for (i = 0; i < arrayUtente.length; i++) {
+    var vincitore = (i + 1);
+}
+
+document.getElementById('punteggio').innerHTML += "Il tuo punteggiò è di " + vincitore;
+
 
 
 
